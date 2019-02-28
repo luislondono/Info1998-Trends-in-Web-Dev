@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+*{
+    font-family: 'Open Sans' , 'Helvetica', 'Arial';
+    padding: 0px;
+    margin: 0px;
+    text-align: left;
+    /* text-indent: 1em; */
+}
+
+body{
+    background-color: bisque;
+    height: 100vh;
+    display: flex;
+}
+
+#info{
+    /* transform: skew(10deg); */
+    background-color: white;
+    margin: auto;
+    min-width: 480px;
+    border: .5px solid black;
+    border-radius: 2px;
+    box-shadow: -1px 1px 10px black;
+    transition-duration: 3s;
+    /* transform: rotateZ(-30deg); */
+    text-indent: 25px;
+}
+
+#info:hover{
+    transform: scale(1.7) rotateX(360deg) translateZ(20px) skew(5deg);
+    box-shadow: -4px 7px 10px black;
+}
+
+#info hr{
+    border: none;
+    height: 2px;
+    background-color: dodgerblue;
+}
+
+p{
+    line-height: 1em;
+    height: 1.3em;
+}
+
+#info hr:first-of-type{
+    background-color: firebrick;
+    height: 3px;
+}
