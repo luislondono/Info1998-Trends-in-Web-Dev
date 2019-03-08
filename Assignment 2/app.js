@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const random = require('random-name');
 const giveJoke = require('give-me-a-joke');
 const path = require('path')
+
+var jokeHits = 0;
 // const cors = require('cors');
 // VAR IS BAD
 
@@ -11,7 +13,6 @@ const path = require('path')
 const app = express();
 app.use(express.static('public'));
 app.use(bodyParser.json());
-// app.use(cors())
 
 app.get('/api/random-name', function (req, res) {
     // console.log("Random Name GET request made!")
@@ -25,8 +26,9 @@ app.get('/api/random-name', function (req, res) {
 app.post('/api/random-joke', function(req,res) {
     giveJoke.getCustomJoke(req.body.firstName,req.body.lastName, function(joke) {
         res.send({'joke' : joke});
-        console.log(req.body);
+        // console.log(req.body);
         })
+    jokeHits += 1
 })
 
 app.listen(PORT, function() {
@@ -35,5 +37,9 @@ app.listen(PORT, function() {
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
+});
+
+app.get('/api/random-joke-count', function(req, res) {
+    res.send({'jokeCount' : jokeHits});
 });
 
